@@ -1,19 +1,25 @@
 <?php
 //including the database connection file
 include("config.php");
+$id = $_GET['id'];
 
-//getting id of the data from url
-//deleting the row from table
+$resultg = mysqli_query($conn,"Delete  FROM graduation WHERE pid=$id");
+
+$resulti = mysqli_query($conn,"Delete  FROM inter WHERE pid=$id");
+
+$results = mysqli_query($conn,"Delete  FROM ssc WHERE pid=$id");
+
+
+$result = mysqli_query($conn,"Delete FROM personal WHERE id=$id");
+
+//$results = mysqli_query($conn, "SELECT * FROM ssc");
 //$id = $_GET['id'];
-//$result = mysqli_query($conn,"DELETE FROM users WHERE id=$id");
+//$resulti = mysqli_query($conn, "SELECT * FROM inter");
+//$id = $_GET['id'];
+//$resultg = mysqli_query($conn, "SELECT * FROM graduation");
+//$id = $_GET['id'];
 
-/*$id = $_GET['id'];
-$id= $_GET['id'];
-$id_no = $_GET['ssc_id'];
-$resultssc = mysqli_query($conn,"DELETE FROM ssc WHERE ssc_id=$id_no");
-$resultinter = mysqli_query($conn,"DELETE FROM inter WHERE id=$id");
-$resultgrad = mysqli_query($conn,"DELETE FROM graduation WHERE id=$id");*/
 
-//redirecting to the display page (index.php in our case)
+
 header("Location:index.php");
 ?>

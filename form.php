@@ -61,6 +61,7 @@ if(isset($_POST['Submit'])){
 				if($num_rows == 0)
 				{
 					$id=1;
+					//$$id = $pid;
 				}
 				else
 				{
@@ -76,7 +77,7 @@ if(isset($_POST['Submit'])){
 	
 	$results = mysqli_query($conn ,"SELECT * FROM ssc");	
 	$querys ="INSERT INTO ssc(pid,ssc_board,ssc_year,ssc_percentage) 
-	VALUES('$id','$ssc_board','$ssc_year','ssc_percentage')";
+	VALUES('$id','$ssc_board','$ssc_year','$ssc_percentage')";
 	$results = mysqli_query($conn,$querys);
 	
 	$resulti = mysqli_query($conn,"SELECT * FROM inter");

@@ -5,6 +5,8 @@ include_once("config.php");
 
 //fetching data in descending order (lastest entry first)
 
+
+
 $result = mysqli_query($conn ,"SELECT * FROM personal");
 
 
@@ -77,8 +79,8 @@ $result = mysqli_query($conn ,"SELECT * FROM personal");
 									echo "<td>".$res['address']."</td>";
 									echo "<td>".$res['qualification']."</td>";	
 									echo "<td>".$res['certification']."</td>";
-									echo "<td><a href=''><i class='glyphicon glyphicon-eye-open  text-primary'></i></a><a href=''><i class='glyphicon glyphicon-pencil  text-success'>
-									</i></a><a href=''><i class='glyphicon glyphicon-trash  text-danger'></i></a></td>";	
+									echo "<td><a href='view.php?id=".$res['id']."'><i class='glyphicon glyphicon-eye-open  text-primary'></i></a><a href=''><i class='glyphicon glyphicon-pencil  text-success'>
+									</i></a><a href='delete.php?id=".$res['id']."'><i class='glyphicon glyphicon-trash id='myButton' Onclick='ConfirmDelete()' text-danger'></i></a></td>";	
 									echo "<tr>";
 								}
 							}
@@ -97,12 +99,22 @@ $result = mysqli_query($conn ,"SELECT * FROM personal");
      
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-	 <script>
-		function myFunction() {
-			alert("are you sure!");
-			
-		}
-	</script>
+	<script type="text/javascript">
+	
+    document.getElementById("myButton").onclick = function () {
+        location.href = "delete.php";
+    };
+	
+	
+	function ConfirmDelete()
+{
+  var x = confirm("Are you sure you want to delete?");
+  if (x)
+      return true;
+  else
+    return false;
+}
+    </script>
 	  
   </body>
 </html>

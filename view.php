@@ -5,9 +5,23 @@ include_once("config.php");
 
 //fetching data in descending order (lastest entry first)
 
-$result = mysqli_query($conn ,"SELECT * FROM personal");
+
+//$result = mysqli_query($conn ,"SELECT * FROM personal");
+$id = $_GET['id'];
+$result = mysqli_query($conn,"SELECT * FROM personal WHERE id=$id");
+
+//$results = mysqli_query($conn, "SELECT * FROM ssc");
+//$id = $_GET['id'];
+$results = mysqli_query($conn,"SELECT * FROM ssc WHERE pid=$id");
 
 
+//$resulti = mysqli_query($conn, "SELECT * FROM inter");
+//$id = $_GET['id'];
+$resulti = mysqli_query($conn,"SELECT * FROM inter WHERE pid=$id");
+
+//$resultg = mysqli_query($conn, "SELECT * FROM graduation");
+//$id = $_GET['id'];
+$resultg = mysqli_query($conn,"SELECT * FROM graduation WHERE pid=$id");
 
 ?>
 <!DOCTYPE html>
@@ -30,8 +44,13 @@ $result = mysqli_query($conn ,"SELECT * FROM personal");
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<style>
-	i{
-		margin:5px;
+	li{
+		
+		font-weight:600;
+	}
+	span{
+		font-weight:400;
+		
 	}
 	</style>
   </head>
@@ -42,51 +61,187 @@ $result = mysqli_query($conn ,"SELECT * FROM personal");
 	<!--PANEL START!-->
 	<div class="row">
 	 
-		<div class="col-md-12">
-			<div class="card-panel">
-				<div class="col-md-12">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="card-panel-x">
+				<!--<div class="col-md-12">
 					<h3 class="text-info m-t-0">Personal Details</h3>
-				</div>
-				<div class="col-md-12 text-right"style="margin:5px;">
-					<a href="add.php"> <button type="submit"  class="btn btn-success ">Add <span class="glyphicon glyphicon-plus" aria-hidden="true"></button></a>
-				</div>
-				<div class="table table-responsive">
-					<table class="table table-bordered table-hover m-t-15">
-						<thead>
-						  <tr class="info">
-							<th>Name</th>
-							<th>Id</th>
-							<th>DOB</th>
-							<th>Sex</th>
-							<th>Address</th>
-							<th>Qualification</th>
-							<th>certifications</th>
-							<th>Actions</th>
-						  </tr>
-						</thead>
-						<tbody>
-							<?php 
-							if(!empty($result))
-							{
-								while($res = mysqli_fetch_array($result)) { 		
-									echo "<tr>";
-									echo "<td>".$res['name']."</td>";
-									echo "<td>".$res['userid']."</td>";
-									echo "<td>".$res['dob']."</td>";
-									echo "<td>".$res['sex']."</td>";
-									echo "<td>".$res['address']."</td>";
-									echo "<td>".$res['qualification']."</td>";	
-									echo "<td>".$res['certification']."</td>";
-									echo "<td><a href=''><i class='glyphicon glyphicon-eye-open  text-primary'></i></a><a href=''><i class='glyphicon glyphicon-pencil  text-success'>
-									</i></a><a href=''><i class='glyphicon glyphicon-trash  text-danger'></i></a></td>";	
-									echo "<tr>";
-								}
-							}
-								?>
-						 
-						</tbody>
-					 </table>
-				</div>
+				</div>-->
+					 
+					
+						
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="page-title">Users</h3>
+							</div>
+							<div class="panel-body">
+								
+								<?php
+									 if(!empty($result))
+									 {
+										 
+									while($res = mysqli_fetch_array($result)) { 
+									//print_r($res);
+									
+									  ?>
+									  <ul class="list-group">
+										<li class="list-group-item">                                            
+                                           Name:
+											<span class="text-primary"><?php echo $res['name'];?></span>
+                                        </li>
+										<li class="list-group-item">
+                                            
+                                            UserId:
+											<span class="text-primary"><?php echo $res['userid'];?></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            
+                                           Date Of Birth:
+										   <span class="text-primary"><?php echo $res['dob'];?></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            
+                                           Gender:
+										   <span class="text-info"><?php echo $res['sex'];?></span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            
+                                            Address:
+											<span class="text-primary"><?php echo $res['address'];?></span>
+                                        </li>
+										<li class="list-group-item">
+                                            
+                                            Qualification:
+											<span class="text-primary"><?php echo $res['qualification'];?></span>
+                                        </li> 
+										<li class="list-group-item">
+                                            
+                                            Certification:
+											<span class="text-primary"><?php echo $res['certification'];?></span>
+                                        </li>
+									</ul>
+									<?php
+									  
+									}
+											}
+											//print_r($result);
+											//exit();
+										
+								   ?>
+                                                                       
+                                   
+							</div>
+							<div class="panel-body col-md-4">
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped table-hover">
+									<thead>
+										<tr class="info">									
+											<th colspan="2">ssc	</th>																	
+										</tr>
+										<?php
+										if(!empty($results)){
+											while($res1 = mysqli_fetch_array($results))
+											{
+											?>
+										<tr>
+											<td><strong>Type</strong></td>
+											<td><?php echo $res1['ssc_board']; ?></td>
+																					
+										</tr>
+										<tr>
+											<td><strong>Year</strong></td>	
+											<td><?php echo $res1['ssc_year']; ?></td>
+																					
+										</tr>
+										<tr>
+											<td><strong>Percentage</strong></td> 
+											<td><?php echo $res1['ssc_percentage']; ?></td>
+																							
+										</tr>
+										<?php
+											}
+										}
+										?>
+									</thead>
+								</table>
+							</div>
+								
+							</div>
+							<div class="panel-body col-md-4">
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped table-hover">
+									<thead>
+										<tr class="info">									
+											<th colspan="2">inter</th>																	
+										</tr>
+										<?php
+										if(!empty($resulti)){
+											while($res2 = mysqli_fetch_array($resulti))
+											{
+											?>
+										<tr>
+											<td><strong>Type</strong></td>
+											<td><?php echo $res2['inter_board']; ?></td>
+																					
+										</tr>
+										<tr>
+											<td><strong>Year</strong></td>	
+											<td><?php echo $res2['inter_year']; ?></td>
+																					
+										</tr>
+										<tr>
+											<td><strong>Percentage</strong></td> 
+											<td><?php echo $res2['inter_percentage']; ?></td>
+																							
+										</tr>
+										<?php
+											}
+										}
+										?>
+									</thead>
+								</table>
+							</div>
+								
+							</div>
+							<div class="panel-body col-md-4">
+							<div class="table-responsive">
+								<table class="table table-bordered table-striped table-hover">
+									<thead>
+										<tr class="info">									
+											<th colspan="2">inter</th>																	
+										</tr>
+										<?php
+										if(!empty($resultg)){
+											while($res3 = mysqli_fetch_array($resultg))
+											{
+											?>
+										<tr>
+											<td><strong>Type</strong></td>
+											<td><?php echo $res3['graduation_board']; ?></td>
+																					
+										</tr>
+										<tr>
+											<td><strong>Year</strong></td>	
+											<td><?php echo $res3['graduation_year']; ?></td>
+																					
+										</tr>
+										<tr>
+											<td><strong>Percentage</strong></td> 
+											<td><?php echo $res3['graduation_percentage']; ?></td>
+																							
+										</tr>
+										<?php
+											}
+										}
+										?>
+									</thead>
+								</table>
+							</div>
+								<a href="index.php"><button class="btn btn-success pull-right">Back</button></a>
+							</div>
+						</div>
+				
+				
+			
 				
 			</div>
 		
