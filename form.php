@@ -27,10 +27,10 @@ include_once("config.php");
 //print_r($_POST);exit();
 
 if(isset($_POST['Submit'])){
-  $name = $_POST['name'];
+  $name   = $_POST['name'];
   $userid = $_POST['userid'];
-  $dob= $_POST['dob'];
-  $sex= $_POST['sex'];
+  $dob    = $_POST['dob'];
+  $sex    = $_POST['sex'];
   $address= $_POST['address'];
   $qualification= $_POST['qualification'];
   $certification =$_POST['certification'];
@@ -41,7 +41,9 @@ if(isset($_POST['Submit'])){
   
   $inter_board= $_POST['inter_board'];
   $inter_year= $_POST['inter_year'];
-  $inter_percentage= $_POST['inter_percentage'];
+  $inter_percentage= $_POST['inter_percentage']; 
+  
+  
   $graduation_board =$_POST['graduation_board'];
   $graduation_year =$_POST['graduation_year'];
   $graduation_percentage =$_POST['graduation_percentage'];
@@ -64,9 +66,13 @@ if(isset($_POST['Submit'])){
 				{
 					$id=$num_rows+1;
 				}
-	$query="INSERT INTO personal(id,name,userid,dob,sex,address,qualification,certification)
-	VALUES('$id','$name','$userid','$dob','$sex','$address',$qualification,'$certification')";
+	$query= "INSERT INTO personal(id,name,userid,dob,sex,address,qualification,certification)
+	                      VALUES('$id','$name','$userid','$dob','$sex','$address','$qualification','$certification')";
 	$result = mysqli_query($conn,$query);
+	
+	//echo $query;
+	//exit();
+	
 	
 	$results = mysqli_query($conn ,"SELECT * FROM ssc");	
 	$querys ="INSERT INTO ssc(pid,ssc_board,ssc_year,ssc_percentage) 
@@ -83,8 +89,8 @@ if(isset($_POST['Submit'])){
 	VALUES('$id','$graduation_board','$graduation_year','$graduation_percentage')";
 	$resultg = mysqli_query($conn,$queryg);
 }
-var_dump($result);
-//header("Location:index.php");
+//var_dump($result);
+header("Location:index.php");
 ?>
     
 

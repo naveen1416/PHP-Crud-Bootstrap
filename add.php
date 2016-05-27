@@ -32,45 +32,46 @@
 		<form class="form-horizontal col-md-offset-2" onsubmit="return validateForm()" action="form.php" method="post" name="form1">
 			<div class="form-group">
 			
-				  <label class="control-label col-sm-2" for="name" >Name<span class="span-text">*</span></label>
+				  <label class="control-label col-sm-2" type="name" for="name" >Name<span class="span-text">*</span></label>
 				  <div class="col-sm-6">
-					<input type="text" class="form-control" id="" name="name"   placeholder="Enter Name" >
+					<input type="text" class="form-control" id="" name="name"   placeholder="Enter Name" required>
 				  </div>
 				  
 			</div>
 			<div class="form-group">
 				  <label class="control-label col-sm-2" for="ID">ID<span class="span-text">*</span></label>
 				  <div class="col-sm-6">          
-					<input type="text" class="form-control" id="userid" placeholder="Enter Id No" name="userid" >
+					<input type="text" class="form-control" id="userid" placeholder="Enter Id No" name="userid" required>
 				  </div>
 			</div>
 			<div class="form-group">
 			  <label class="control-label col-sm-2" for="ID">Date Of Birth<span class="span-text">*</span></label>
 			  <div class="col-sm-6">          
-				<input type="text" class="form-control" id="datepicker" placeholder="Select Date" name="dob" />
+				<input type="text" class="form-control" id="datepicker" placeholder="Select Date" name="dob" required />
 			  </div>
 			</div>
 			<div class="form-group">
 			  <label class="control-label col-sm-2" for="ID">Sex<span class="span-text">*</span></label>
 				<div class="col-sm-6">
 				  <label class="radio-inline">
-					  <input type="radio" name="sex" id="idsex_male" value="M" checked>Male
+					  <input type="radio" name="sex" id="idsex_male" value="M" required>Male
 				  </label>
 					<label class="radio-inline">
-					  <input type="radio" name="sex" id="idsex_female" value="F" >Female
+					  <input type="radio" name="sex" id="idsex_female" value="F" required >Female
 					</label>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="Addr">Address<span class="span-text">*</span></label>
 				<div class="col-sm-6">
-				<textarea class="form-control" id="Addr" name="address" placeholder="fill address" ></textarea>
+				<textarea class="form-control" id="Addr" name="address" placeholder="fill address" required ></textarea>
 				</div>
 			</div>
 			<div class="form-group">
 			 <label class="control-label col-sm-2" for="sel2">Qualification<span class="span-text">*</span></label>
 			 <div class="col-sm-6">
-				  <select class="form-control" id="sel2" name="qualification">					
+				  <select class="form-control" id="sel2" name="qualification" required>					
+					<option></option>
 					<option>S.S.C</option>
 					<option>Intermediate</option>
 					<option>Bachelors</option>
@@ -82,8 +83,8 @@
 			<div class="form-group">
 			 <label class="control-label col-sm-2" for="sel2">Certifications<span class="span-text">*</span></label>
 			 <div class="col-sm-6">
-			  <select multiple class="form-control" id="sel3" name="certification">
-				<option>Certifications</option>
+			  <select multiple class="form-control" id="sel3" name="certification" required>
+				<option></option>
 				<option>AGILE</option>
 				<option>SCRUM</option>
 				<option>ISTQB</option>
@@ -99,11 +100,11 @@
 					<div class="form-group">
 					  <label class="control-label col-sm-2" for="ssc">SSC<span class="span-text">*</span></label>
 					  <div class="col-sm-3">          
-						<input type="text" class="form-control" id="ssc" name="ssc_board" placeholder="SSC">
+						<input type="text" class="form-control" id="ssc" name="ssc_board" placeholder="SSC" required>
 					  </div>
 					  <div class="col-sm-3">          
-						<select class="form-control" name="ssc_year" id="year">
-							<option>Select Year</option>
+						<select class="form-control" name="ssc_year" id="year" required>
+							<option></option>
 							<?php 
 								for($year=1977; $year<= 2016; $year ++)
 								{
@@ -113,17 +114,17 @@
 						</select>
 					  </div>
 					  <div class="col-sm-3">          
-						<input type="text" class="form-control" id="" name="ssc_percentage" placeholder="Enter %">
+						<input type="text" class="form-control" id="" name="ssc_percentage" placeholder="Enter %" required>
 					  </div>
 					</div>
 				
 					<div class="form-group">
 					  <label class="control-label col-sm-2" for="inter">Intermediate<span class="span-text">*</span></label>
 					  <div class="col-sm-3">          
-						<input type="text" class="form-control" id="inter" name="inter_board" placeholder="Intermediate">
+						<input type="text" class="form-control" id="inter" name="inter_board" placeholder="Intermediate" required>
 					  </div>
 					  <div class="col-sm-3">          
-						<select class="form-control" name="inter_year" id="colg">
+						<select class="form-control" name="inter_year" id="colg" required>
 							<option>Select Year</option>
 							<?php 
 								for($year=1977; $year<= 2016; $year ++)
@@ -134,14 +135,14 @@
 						</select>
 					  </div>
 					  <div class="col-sm-3">          
-						<input type="text" class="form-control" id="" name="inter_percentage" placeholder="Enter %">
+						<input type="text" class="form-control" id="" name="inter_percentage" placeholder="Enter %" required>
 					  </div>
 					</div>
 				
 					<div class="form-group">
 					  <label class="control-label col-sm-2" for="inter">Graduation<span class="span-text">*</span></label>
 					  <div class="col-sm-3">          
-						<input type="text" class="form-control" id="Graduation" name="graduation_board" placeholder="Graduation">
+						<input type="text" class="form-control" id="Graduation" name="graduation_board" placeholder="Graduation" required>
 					  </div>
 					  <div class="col-sm-3">          
 						<select class="form-control" name="graduation_year" id="Graduation1">
@@ -155,7 +156,7 @@
 						</select>
 					  </div>
 					  <div class="col-sm-3">          
-						<input type="text" class="form-control" id="Graduation2" name="graduation_percentage" placeholder="Enter %">
+						<input type="text" class="form-control" id="Graduation2" name="graduation_percentage" placeholder="Enter %" required>
 					  </div>
 					</div>
 				</div>
