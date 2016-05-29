@@ -9,6 +9,12 @@ include_once("config.php");
 
 $result = mysqli_query($conn ,"SELECT * FROM personal");
 
+/*$resultssc = mysqli_query($conn ,"SELECT * FROM ssc");
+
+$resultinter = mysqli_query($conn ,"SELECT * FROM inter");
+
+$resultgraduation = mysqli_query($conn ,"SELECT * FROM graduation");*/
+
 
 
 ?>
@@ -79,7 +85,7 @@ $result = mysqli_query($conn ,"SELECT * FROM personal");
 									echo "<td>".$res['address']."</td>";
 									echo "<td>".$res['qualification']."</td>";	
 									echo "<td>".$res['certification']."</td>";
-									echo "<td><a href='view.php?id=".$res['id']."'><i class='glyphicon glyphicon-eye-open  text-primary'></i></a><a href=''><i class='glyphicon glyphicon-pencil  text-success'>
+									echo "<td><a href='view.php?id=".$res['id']."'><i class='glyphicon glyphicon-eye-open  text-primary'></i></a><a href='edit.php?=".$res['id']."'><i class='glyphicon glyphicon-pencil  text-success'>
 									</i></a><a href='delete.php?id=".$res['id']."'><i class='glyphicon glyphicon-trash id='myButton' Onclick='ConfirmDelete()' text-danger'></i></a></td>";	
 									echo "<tr>";
 								}
